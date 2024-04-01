@@ -71,7 +71,7 @@ if(isset($_POST['login']))
                             </div>
                             <form role="form" id=""  method="post" enctype="multipart/form-data" class="">  
                                 <div class="form-group first">
-                                    <input type="text" class="form-control form-control-lg" name="username" id="exampleInputEmail1" placeholder="Username" required>
+                                    <input type="text" class="form-control form-control-lg" autofocus='true' name="username" id="exampleInputEmail1" placeholder="Username" required>
                                 </div>
                                 <div class="form-group last">
                                     <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password" required>
@@ -91,10 +91,10 @@ if(isset($_POST['login']))
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                           <div class="carousel-inner">
                             <div class="carousel-item active">
-                              <img class="d-block w-100" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8ZXZlbnQlMjBkZWNvcmF0aW9ufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="First slide" >
+                              <img class="d-block w-100" src="assets/img/companyimages/landing-page-photo-1.jpeg" alt="First slide" >
                             </div>
                             <div class="carousel-item">
-                              <img class="d-block w-100" src="https://hire4event.com/blogs/wp-content/uploads/2019/03/Type-of-events.jpg" alt="Second slide">
+                              <img class="d-block w-100" src="assets/img/companyimages/landing-page-photo-2.jpeg" alt="Second slide">
                             </div>
                           </div>
                           <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -115,12 +115,5 @@ if(isset($_POST['login']))
     </div>
     
     <?php @include("includes/foot.php");?>
-<!--  Author Name: Nikhil Bhalerao From India 
- for any PHP, Codeignitor, Laravel OR Python work contact me at +919423979339 OR ndbhalerao91@gmail.com  
- Visit website : www.nikhilbhalerao.com -->
-    
 </body>
-<!--  Author Name: Nikhil Bhalerao From India 
- for any PHP, Codeignitor, Laravel OR Python work contact me at +919423979339 OR ndbhalerao91@gmail.com  
- Visit website : www.nikhilbhalerao.com -->
 </html>

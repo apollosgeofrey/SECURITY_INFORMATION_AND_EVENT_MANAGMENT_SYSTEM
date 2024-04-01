@@ -2,7 +2,7 @@
   
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Royal Event Management Software</title>
+  <title>Royal Security & Event Management Software</title>
   
   <link rel="stylesheet" href="assets/vendor/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/vendor/css/vendor.bundle.base.css">
