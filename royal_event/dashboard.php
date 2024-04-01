@@ -23,16 +23,16 @@ check_login();
                 <div class="col-md-6 stretch-card grid-margin">
               <div class="card bg-gradient-primary card-img-holder text-white"style="height: 130px;">
                 <div class="card-body" >
-                  <h4 class="font-weight-normal mb-3">Total Events
+                  <h4 class="font-weight-normal mb-3">All Events
                   </h4>
                   <?php 
                   $sql ="SELECT ID FROM tbleventtype";
                   $query = $dbh -> prepare($sql);
                   $query->execute();
                   $results=$query->fetchAll(PDO::FETCH_OBJ);
-                  $totalevents=$query->rowCount();
+                  $allevents=$query->rowCount();
                   ?>
-                  <h2 class="mb-5"><?php echo htmlentities($totalevents);?></h2>
+                  <h2 class="mb-5"><?php echo htmlentities($allevents);?></h2>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@ check_login();
                   $query->execute();
                   $results=$query->fetchAll(PDO::FETCH_OBJ);
                   $upcomingevents=$query->rowCount();
-                  $upcomingeventspct=(100 * $upcomingevents)/$totalevents;
+                  $upcomingeventspct=(100 * $upcomingevents)/$allevents;
 
                   ?> 
                   <h2 class="mb-5"><?php echo htmlentities($upcomingevents);?></h2>
@@ -66,7 +66,7 @@ check_login();
                   $query->execute();
                   $results=$query->fetchAll(PDO::FETCH_OBJ);
                   $completedevents=$query->rowCount();
-                  $completedeventspct=(100 * $completedevents)/$totalevents;
+                  $completedeventspct=(100 * $completedevents)/$allevents;
                   ?>
                   <h2 class="mb-5"><?php echo htmlentities($completedevents);?></h2>
                 </div>
@@ -83,7 +83,7 @@ check_login();
                   $query->execute();
                   $results=$query->fetchAll(PDO::FETCH_OBJ);
                   $ongoingevents=$query->rowCount();
-                  $ongoingeventspct=(100 * $ongoingevents)/$totalevents;
+                  $ongoingeventspct=(100 * $ongoingevents)/$allevents;
                   ?>
                   <h2 class="mb-5"><?php echo htmlentities($ongoingevents);?></h2>
                 </div>
