@@ -44,7 +44,7 @@ if(isset($_POST['submit']))
                         <div class="col-12">
                             <div class="card">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" style="float: left;">Company details</h5>
+                                    <h5 class="modal-title" style="float: left;">Application Settings</h5>
                                 </div>
 
                                 <div class="card-body">

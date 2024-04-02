@@ -22,10 +22,7 @@ if(isset($_GET['delid']))
 <html lang="en">
 <?php @include("includes/head.php");?>
 <body>
-<!--  Author Name: Nikhil Bhalerao From India 
- for any PHP, Codeignitor, Laravel OR Python work contact me at +919423979339 OR ndbhalerao91@gmail.com  
- Visit website : www.nikhilbhalerao.com -->
-  
+
   
   
   <div class="container-scroller">
@@ -41,7 +38,7 @@ if(isset($_GET['delid']))
                     <div class="col-lg-12 grid-margin stretch-card">
                         <div class="card">
                             <div class="modal-header">
-                                <h5 class="modal-title" style="float: left;">Register user</h5>    
+                                <h5 class="modal-title" style="float: left;">Register Admin Officers</h5>    
                                 <div class="card-tools" style="float: right;">
                                     <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#delete" ></i> Blocked users
                                     </button>
@@ -120,10 +117,8 @@ if(isset($_GET['delid']))
                                             <th class="text-center" style="width: 15%;">Action</th>
                                         </tr>
                                     </thead>
-                                    <!--  Author Name: Nikhil Bhalerao From India 
- for any PHP, Codeignitor, Laravel OR Python work contact me at +919423979339 OR ndbhalerao91@gmail.com  
- Visit website : www.nikhilbhalerao.com -->
-<tbody>
+                                    
+                                    <tbody>
                                         <?php
                                         $sql="SELECT * from tbladmin where Status='1' ";
                                         $query = $dbh -> prepare($sql);
@@ -168,9 +163,6 @@ if(isset($_GET['delid']))
     </div>
     
     <?php @include("includes/foot.php");?>
-<!--  Author Name: Nikhil Bhalerao From India 
- for any PHP, Codeignitor, Laravel OR Python work contact me at +919423979339 OR ndbhalerao91@gmail.com  
- Visit website : www.nikhilbhalerao.com -->
     
     <script type="text/javascript">
         $(document).ready(function(){
@@ -200,7 +192,4 @@ if(isset($_GET['delid']))
         });
     </script>
 </body>
-<!--  Author Name: Nikhil Bhalerao From India 
- for any PHP, Codeignitor, Laravel OR Python work contact me at +919423979339 OR ndbhalerao91@gmail.com  
- Visit website : www.nikhilbhalerao.com -->
 </html>

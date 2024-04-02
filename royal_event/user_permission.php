@@ -32,7 +32,7 @@ if(isset($_GET['delid']))
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" style="float: left;">User Permissions</h5>
+                                    <h5 class="modal-title" style="float: left;">Officers Permissions</h5>
                                 </div>
                                 
                                 <div id="editData" class="modal fade">
