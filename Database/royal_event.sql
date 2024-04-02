@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2024 at 08:12 PM
+-- Generation Time: Apr 02, 2024 at 10:45 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -100,7 +100,7 @@ CREATE TABLE `tbladmin` (
 --
 
 INSERT INTO `tbladmin` (`ID`, `Staffid`, `AdminName`, `UserName`, `FirstName`, `LastName`, `MobileNumber`, `Email`, `Status`, `Photo`, `Password`, `permissions_id`, `AdminRegdate`) VALUES
-(2, 'U002', 'Admin', 'admin@royalevents.com', 'App', 'Admin', 942397933, 'admin@royalevents.com', 1, 'Screenshot from 2023-01-05 11-23-52.png', '21232f297a57a5a743894a0e4a801fc3', NULL, '2022-07-21 10:18:39');
+(2, 'U002', 'Admin', 'admin@royalevents.com', 'App', 'Admin', 942397933, 'admin@royalevents.com', 1, 'IMG_20220708_170638_972.jpg', '21232f297a57a5a743894a0e4a801fc3', NULL, '2022-07-21 10:18:39');
 
 -- --------------------------------------------------------
 
@@ -149,7 +149,6 @@ CREATE TABLE `tbleventtype` (
 
 INSERT INTO `tbleventtype` (`ID`, `EventType`, `eventDescription`, `start_date`, `end_date`, `CreationDate`) VALUES
 (1, 'Birthday Party', NULL, '2024-04-03 18:44:19', '2024-04-06 00:00:00', '2022-01-22 07:02:34'),
-(2, 'Community', NULL, '2024-04-04 00:00:00', '2024-04-07 00:00:00', '2022-01-22 07:03:24'),
 (3, 'Concert', NULL, '2024-04-05 00:00:00', '2024-04-08 00:00:00', '2022-01-22 07:03:35'),
 (4, 'Get Together', NULL, '2024-03-04 00:00:00', '2024-03-06 00:00:00', '2022-01-22 07:04:04'),
 (5, 'Night Club', NULL, '2024-03-05 00:00:00', '2024-03-07 00:00:00', '2022-01-22 07:04:26'),
@@ -212,7 +211,7 @@ ALTER TABLE `tbeventparticipants`
 -- AUTO_INCREMENT for table `tbladmin`
 --
 ALTER TABLE `tbladmin`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tblcompany`
@@ -224,7 +223,7 @@ ALTER TABLE `tblcompany`
 -- AUTO_INCREMENT for table `tbleventtype`
 --
 ALTER TABLE `tbleventtype`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
