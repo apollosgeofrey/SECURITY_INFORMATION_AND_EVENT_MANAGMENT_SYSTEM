@@ -77,13 +77,13 @@ if(isset($_POST['submit']))
               {?>
                 <div class="checkbox form-check">
                   <label class="">
-                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="createbid" checked value="1"> Create Service</label>
+                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="createbid" checked value="1"> Create Event</label>
                 </div>
                 <?php 
               } else {?>
                 <div class="checkbox form-check">
                   <label class="">
-                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="createbid"  value="1"> Create Service</label>
+                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="createbid"  value="1"> Create Event</label>
                 </div>
                 <?php 
               } ?>
@@ -93,13 +93,13 @@ if(isset($_POST['submit']))
               {?>
                 <div class="checkbox form-check">
                    <label class="">
-                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="updatebid" checked value="1"> Update Service</label>
+                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="updatebid" checked value="1"> Update Event</label>
                 </div>
                 <?php 
               } else {?>
                 <div class="checkbox form-check">
                   <label class="">
-                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="updatebid"  value="1"> Update Service</label>
+                   <input type="checkbox" class="form-check-input" id="inlineCheckbox1" name="updatebid"  value="1"> Update Event</label>
                 </div>
                 <?php 
               } ?>

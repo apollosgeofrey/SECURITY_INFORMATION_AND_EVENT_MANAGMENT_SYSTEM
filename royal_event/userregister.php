@@ -1,10 +1,11 @@
+
 <?php
 include('includes/checklogin.php');
 check_login();
 if(isset($_GET['delid']))
 {
     $rid=intval($_GET['delid']);
-    $sql="update tbladmin set Status='0' where ID='$rid'";
+    $sql="update tbladmin set Status='0' where ID = :rid";
     $query=$dbh->prepare($sql);
     $query->bindParam(':rid',$rid,PDO::PARAM_STR);
     $query->execute();

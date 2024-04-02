@@ -96,106 +96,65 @@
             <a class="nav-link" href="dashboard.php">Dashboard</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link" href="manage_event.php">Manage Events</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="manage_service.php">Manage Service</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Booking management</a>
-            <div class="dropdown-menu  navbar-dropdown" aria-labelledby="dropdown05">
-              <a class="dropdown-item" href="new_bookings.php">New Bookings</a>
-              <a class="dropdown-item" href="approved_bookings.php">Approved Bookings</a>
-              <a class="dropdown-item" href="cancelled_bookings.php">Cancelled Bookings</a>
-            </div>
+            <a class="nav-link" href="manage_event.php">Manage Events And Participants</a>
           </li>
 
-            <li class="nav-item dropdown">
-            <a class="nav-link" href="companyprofile.php">Company</a>
-          </li>
-
-          
            <?php
-        $aid=$_SESSION['odmsaid'];
-        $sql="SELECT * from  tbladmin where ID=:aid";
-        $query = $dbh -> prepare($sql);
-        $query->bindParam(':aid',$aid,PDO::PARAM_STR);
-        $query->execute();
-        $results=$query->fetchAll(PDO::FETCH_OBJ);
-        $cnt=1;
-        if($query->rowCount() > 0)
-        {  
-            foreach($results as $row)
-            { 
-                if($row->AdminName=="Admin"  )
-                { 
-                    ?>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User management</a>
-            <div class="dropdown-menu  navbar-dropdown" aria-labelledby="dropdown05">
-              <a class="dropdown-item" href="userregister.php">Manage users</a>
-              <?php
-                                $aid=$_SESSION['odmsaid'];
-                                $sql="SELECT * from  tbladmin where ID=:aid";
-                                $query = $dbh -> prepare($sql);
-                                $query->bindParam(':aid',$aid,PDO::PARAM_STR);
-                                $query->execute();
-                                $results=$query->fetchAll(PDO::FETCH_OBJ);
-                                $cnt=1;
-                                if($query->rowCount() > 0)
-                                {  
-                                    foreach($results as $row)
-                                    { 
-                                        if($row->AdminName=="Admin" )
-                                        { 
-                                            ?>
-              <a class="dropdown-item" href="user_permission.php">User Roles</a>
+              $aid=$_SESSION['odmsaid'];
+              $sql="SELECT * from  tbladmin where ID=:aid";
+              $query = $dbh -> prepare($sql);
+              $query->bindParam(':aid',$aid,PDO::PARAM_STR);
+              $query->execute();
+              $results=$query->fetchAll(PDO::FETCH_OBJ);
+              $cnt=1;
+              if($query->rowCount() > 0)
+              {  
+                  foreach($results as $row)
+                  { 
+                      if($row->AdminName=="Admin"  )
+                      { 
+                          ?>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Manage Administration</a>
+                  <div class="dropdown-menu  navbar-dropdown" aria-labelledby="dropdown05">
+                    <a class="dropdown-item" href="userregister.php">Manage Events Registration Officers</a>
+                    <?php
+                          $aid=$_SESSION['odmsaid'];
+                          $sql="SELECT * from  tbladmin where ID=:aid";
+                          $query = $dbh -> prepare($sql);
+                          $query->bindParam(':aid',$aid,PDO::PARAM_STR);
+                          $query->execute();
+                          $results=$query->fetchAll(PDO::FETCH_OBJ);
+                          $cnt=1;
+                          if($query->rowCount() > 0)
+                          {  
+                              foreach($results as $row)
+                              { 
+                                  if($row->AdminName=="Admin" )
+                                  { 
+                                      ?>
+                        <a class="dropdown-item" href="user_permission.php">Officers Roles</a>
 
-                                            <?php 
-                                        } 
-                                    }
-                                } ?> 
-            </div>
-          </li>
+                                      <?php 
+                                  } 
+                              }
+                          } ?> 
+                  </div>
+                </li>
               <?php 
                 } 
-            }
-        } ?> 
-         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
-            <div class="dropdown-menu  navbar-dropdown" aria-labelledby="dropdown05">
-              <a class="dropdown-item" href="event_report.php">Events List Reports</a>
-              <!-- <a class="dropdown-item" href="services_report.php">Services List Reports</a> -->
-              <a class="dropdown-item" href="booking_report.php">Booking Reports</a>
-              <a class="dropdown-item" href="btndates_report.php">Btndates Reports</a>
+                }
+            } ?>
 
-            </div>
-          </li>
-
-         <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://api.whatsapp.com/send?phone=919423979339&text=Hi%20Nikhil,%20I%20saw%20your%20Project%20named%20as%20Royal%20Event%20Software.%20I%20need%20your%20help%20for%20the%20same.
-          ">
-               
-                <span class="menu-title">Contact Author</span>
-            </a>
-                  </li> 
-
-        <li class="nav-item">
-            <a class="nav-link" target="_blank" href="https://www.youtube.com/c/NikhilBhalerao?sub_confirmation=1
-        ">
-               
-                <span class="menu-title">Other Projects</span>
-            </a>
-        </li>
-    
-        </ul>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="companyprofile.php">App Settings</a>
+            </li>
+          </ul>
 
          <ul class="navbar-nav navbar-nav-right">
-
-      
-      
       
         </ul>
+
       </div>
     </nav>
 
