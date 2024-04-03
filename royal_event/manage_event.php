@@ -99,7 +99,19 @@ if(isset($_GET['delid']))
                             <td class="text-center"><?php echo htmlentities($cnt);?></td>
                             <td class="font-w600">
                               <a href="manage_event_participant.php?eventid=<?php echo ($row->ID);?>">
-                                <b><u><?php  echo strtoupper(htmlentities($row->EventType));?></u></b>
+                                <b><u>
+                                  <?php  echo strtoupper(htmlentities($row->EventType));?>
+                                  
+                                  <?php
+                                    $sql = "SELECT COUNT(*) AS row_count FROM tbeventparticipants WHERE eventtype_id = :eventId";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(':eventId', $row->ID, PDO::PARAM_STR);
+                                    $query->execute();
+                                    $result = $query->fetch(PDO::FETCH_ASSOC);
+                                  ?>  
+
+                                  <small class="text-danger">-- <?php echo $result['row_count'] ?> PARTICIPANTS</small>  
+                                </u></b>
                               </a>
                               <div class="">
                                 <small>

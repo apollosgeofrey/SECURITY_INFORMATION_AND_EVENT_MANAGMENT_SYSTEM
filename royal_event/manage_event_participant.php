@@ -5,12 +5,23 @@ check_login();
 if(isset($_GET['delid']))
 {
   $rid=intval($_GET['delid']);
-  $sql="delete from tbeventparticipants where ID=:rid";
+  $sql="DELETE FROM tbeventparticipants WHERE id=:rid";
   $query=$dbh->prepare($sql);
   $query->bindParam(':rid',$rid,PDO::PARAM_STR);
   $query->execute();
-  echo "<script>alert('Data deleted');</script>"; 
-  echo "<script>window.location.href = 'manage_event.php'</script>";
+  echo "<script>alert('Participant Data Deleted');</script>"; 
+  echo "<script>window.location.href = 'manage_event_participant.php'</script>";
+}
+
+  // get the event record
+$result = [];
+if(isset($_GET['eventid'])) 
+{
+  $sql = "SELECT * FROM tbleventtype WHERE ID=:eventId";
+  $query = $dbh->prepare($sql);
+  $query->bindParam(':eventId', $_GET['eventid'], PDO::PARAM_STR);
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
 }
 ?>
 <!DOCTYPE html>
@@ -30,33 +41,46 @@ if(isset($_GET['delid']))
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="modal-header">
-                  <h5 class="modal-title" style="float: left;">List Registered Events</h5>    
+                  <h5 class="modal-title" style="float: left;">
+                    REGISTERED PARTICIPANTS :: <b><u><?php echo strtoupper($result['EventType']) ?></u></b>
+                  </h5>    
                   <div class="card-tools" style="float: right;">
-                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#addsector" ><i class="fas fa-plus" ></i> Add Event
+                    <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#addsector" ><i class="fas fa-plus" ></i> Add Participant
                     </button>
                   </div>    
                 </div>
                 
                 <div class="modal fade" id="addsector">
-                  <div class="modal-dialog modal-sm ">
+                  <div class="modal-dialog modal-lg ">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h4 class="modal-title">Register Event</h4>
+                        <h4 class="modal-title">Register New Event Participant</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
-                        
-                        <?php @include("newevent.php");?>
+                        <?php @include("newevent_participant.php");?>
                       </div>
-                      <div class="modal-footer ">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  
+                    </div>                    
+                  </div>                  
+                </div>
+
+
+                <div id="editData" class="modal fade">
+                    <div class="modal-dialog modal-lg ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Edit Event Participant Details</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="info_update">
+                                <?php @include("update_event_participant.php");?>
+                            </div>                            
+                        </div>                        
+                    </div>                    
                 </div>
                 
               <div class="card-body table-responsive p-3">
@@ -64,21 +88,19 @@ if(isset($_GET['delid']))
                   <thead>
                     <tr>
                       <th class="text-center">No.</th>
-                      <th>Event Name</th>
-                      <th>Start Date</th>
-                      <th>End Date</th>
-                      <th>Creation Date</th>
+                      <th>Participant</th>
+                      <th>Email/Phone</th>
+                      <th>Address</th>
+                      <th>Date Registered</th>
+                      <th>Next of Kin Details</th>
+                      <th>Registration Officer</th>
                       <th class="text-center" style="width: 15%;">Action</th>
                     </tr>
                   </thead>
                   
                   <tbody>
                     <?php
-                    $sql="SELECT * from tbeventparticipants WHERE eventtype_id=:eventId";
-                    $query=$dbh->prepare($sql);
-                    $query->bindParam(':eventId',intval($_GET['eventid']),PDO::PARAM_STR);
-
-                    $sql="";
+                    $sql="SELECT * from tbeventparticipants ORDER BY date_registered_for_event ASC";
                     $query = $dbh -> prepare($sql);
                     $query->execute();
                     $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -88,30 +110,81 @@ if(isset($_GET['delid']))
                     {
                       foreach($results as $row)
                         {               ?>
-                          <tr>
+                          <tr class="small">
                             <td class="text-center"><?php echo htmlentities($cnt);?></td>
                             <td class="font-w600">
-                              <a href="manage_event_participant.php?eventid=<?php echo ($row->ID);?>">
-                                <b><u><?php  echo strtoupper(htmlentities($row->EventType));?></u></b>
-                              </a>
-                              <div class="">
-                                <small>
-                                  <b class="fw-bold">Description:</b>
-                                  <i><?php  echo htmlentities($row->eventDescription ?? ' N/A');?></i>
-                                </small>                                
-                              </div>
-                            </td>
-                            <td class="d-none d-sm-table-cell"><?php  echo htmlentities($row->start_date);?></td>
-                            <td class="d-none d-sm-table-cell"><?php  echo htmlentities($row->end_date);?></td>
-                            <td class="d-none d-sm-table-cell"><?php  echo htmlentities($row->CreationDate);?></td>
-                            <td class="text-center">
-                              <a href="manage_event_participant.php?eventid=<?php echo ($row->ID);?>" class="rounded btn btn-info">
-                                <i class="mdi mdi-eye" aria-hidden="true"></i>
-                              </a>
+                              <small>
+                                <b>
+                                  <?php  echo strtoupper(htmlentities($row->last_name));?>
+                                  <?php  echo strtoupper(htmlentities($row->other_names));?>
+                                </b><br>
 
-                              <a href="manage_event.php?delid=<?php echo ($row->ID);?>" onclick="return confirm('Do you really want to Delete ?');" class="rounded btn btn-danger">
-                                <i class="mdi mdi-delete" aria-hidden="true"></i>
-                              </a>
+                                <b>-Gender:</b> <i><?php  echo htmlentities($row->gender) ?? 'N/A'; ?></i><br>
+                                <b>-Date of Birth:</b> <i><?php  echo htmlentities(date('jS M, Y', strtotime($row->dob)));?></i><br>
+                              </small>
+                            </td>
+
+                            <td class="d-none d-sm-table-cell">
+                              <small>
+                                <i><?php  echo htmlentities($row->email); ?></i><br>
+                                <i><?php  echo htmlentities($row->telephone); ?></i>
+                              </small>
+                            </td>
+
+                            <td class="d-none d-sm-table-cell">
+                              <small>
+                                <i><?php  echo strtoupper(htmlentities($row->address ?? 'N/A')); ?></i>
+                              </small>                              
+                            </td>
+
+                            <td class="d-none d-sm-table-cell">
+                              <small>
+                                <?php  echo htmlentities(date('jS M, Y', strtotime($row->date_registered_for_event)));?><br>
+                                <?php  echo htmlentities(date('h:m:s a', strtotime($row->date_registered_for_event)));?>
+                              </small>
+                            </td>
+
+                            <td>
+                              <small>
+                                <b>
+                                  <?php  echo strtoupper(htmlentities($row->next_of_kin_full_name));?>
+                                </b><br>
+
+                                <b>*Email:</b> <i><?php  echo htmlentities($row->next_of_kin_email) ?? 'N/A'; ?></i><br>
+                                <b>*Telephone:</b> <i><?php  echo htmlentities($row->next_of_kin_telephone) ?? 'N/A'; ?></i><br>
+                                <b>*Address:</b> <i><?php  echo htmlentities($row->next_of_kin_address) ?? 'N/A'; ?></i><br>
+                              </small>
+                            </td>
+                                  
+                            <td>
+                              <?php
+                                $sql = "SELECT * FROM tbladmin WHERE ID = :regOfficer";
+                                $query = $dbh->prepare($sql);
+                                $query->bindParam(':regOfficer', $row->registration_officer_id, PDO::PARAM_STR);
+                                $query->execute();
+                                $result = $query->fetch(PDO::FETCH_ASSOC);
+                              ?> 
+                              
+                              <small>
+                                <b>
+                                  <?php  echo strtoupper(htmlentities($result['FirstName'] ?? 'N/A'));?>
+                                  <?php  echo strtoupper(htmlentities($result['LastName'] ?? 'N/A'));?>
+                                </b><br>
+                              </small>
+                            </td>
+
+                            <td class="text-center">
+                              <small>
+                                <a href="view_participant_qrcode.php?eventParticipantId=<?php echo ($row->id);?>" class="rounded btn btn-info">
+                                  <i class="mdi mdi-key" aria-hidden="true"></i>
+                                </a>
+
+                                <a href="#"  class=" edit_data btn btn-purple rounded" id="<?php echo ($row->id); ?>" title="click for edit"><i class="mdi mdi-pencil-box-outline" aria-hidden="true"></i></a>
+
+                                <a href="manage_event_participant.php?delid=<?php echo ($row->id);?>" onclick="return confirm('Do you really want to Delete ?');" class="rounded btn btn-danger">
+                                  <i class="mdi mdi-delete" aria-hidden="true"></i>
+                                </a>
+                              </small>
                             </td>
 
                           </tr>
@@ -119,13 +192,14 @@ if(isset($_GET['delid']))
                           $cnt=$cnt+1;
                         }
                       } ?>
-                    </tbody>
-                  </table>
-                </div>
+                  </tbody>
+
+                </table>
               </div>
             </div>
           </div>
         </div>
+      </div>
         
         
         <?php @include("includes/footer.php");?>
@@ -136,6 +210,33 @@ if(isset($_GET['delid']))
     
   </div>
   
-  <?php @include("includes/foot.php");?>  
+  <?php @include("includes/foot.php");?>
+  <script type="text/javascript">
+      $(document).ready(function(){
+          $(document).on('click','.edit_data',function()
+          {
+              var edit_id=$(this).attr('id');
+              $.ajax(
+              {
+                  url:"update_event_participant.php",
+                  type:"post",
+                  data:{edit_id:edit_id},
+                  beforeSend: function(){
+                      $(".se-pre-con").show();
+                  },
+                  complete:function(){
+                      $(".se-pre-con").hide();
+                  },
+
+                  success:function(data)
+                  {
+                      $("#info_update").html(data);
+                      $("#editData").modal('show');
+                  }
+
+              });
+          });
+      });
+  </script>
 </body>
 </html>
