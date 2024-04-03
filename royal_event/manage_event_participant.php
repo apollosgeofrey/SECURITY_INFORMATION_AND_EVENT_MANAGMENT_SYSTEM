@@ -114,10 +114,13 @@ if(isset($_GET['eventid']))
                             <td class="text-center"><?php echo htmlentities($cnt);?></td>
                             <td class="font-w600">
                               <small>
-                                <b>
-                                  <?php  echo strtoupper(htmlentities($row->last_name));?>
-                                  <?php  echo strtoupper(htmlentities($row->other_names));?>
-                                </b><br>
+                                <a href="view_participant_qrcode.php?eventParticipantId=<?php echo ($row->id);?>" target="__blank">
+                                  <b><u>
+                                    <?php  echo strtoupper(htmlentities($row->last_name));?>
+                                    <?php  echo strtoupper(htmlentities($row->other_names));?>
+                                  </u></b>
+                                </a>
+                                <br>
 
                                 <b>-Gender:</b> <i><?php  echo htmlentities($row->gender) ?? 'N/A'; ?></i><br>
                                 <b>-Date of Birth:</b> <i><?php  echo htmlentities(date('jS M, Y', strtotime($row->dob)));?></i><br>
@@ -175,11 +178,11 @@ if(isset($_GET['eventid']))
 
                             <td class="text-center">
                               <small>
-                                <a href="view_participant_qrcode.php?eventParticipantId=<?php echo ($row->id);?>" class="rounded btn btn-info">
+                                <a href="view_participant_qrcode.php?eventParticipantId=<?php echo ($row->id);?>" class="rounded btn btn-info" target="__blank">
                                   <i class="mdi mdi-key" aria-hidden="true"></i>
                                 </a>
 
-                                <a href="#"  class=" edit_data btn btn-purple rounded" id="<?php echo ($row->id); ?>" title="click for edit"><i class="mdi mdi-pencil-box-outline" aria-hidden="true"></i></a>
+                                <a href="#" class=" edit_data btn btn-purple rounded" id="<?php echo ($row->id); ?>" title="click for edit"><i class="mdi mdi-pencil-box-outline" aria-hidden="true"></i></a>
 
                                 <a href="manage_event_participant.php?delid=<?php echo ($row->id);?>" onclick="return confirm('Do you really want to Delete ?');" class="rounded btn btn-danger">
                                   <i class="mdi mdi-delete" aria-hidden="true"></i>
