@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 02, 2024 at 10:45 PM
+-- Generation Time: Apr 04, 2024 at 06:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -73,6 +73,18 @@ CREATE TABLE `tbeventparticipants` (
   `additional_column_2` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbeventparticipants`
+--
+
+INSERT INTO `tbeventparticipants` (`id`, `eventtype_id`, `last_name`, `other_names`, `email`, `telephone`, `gender`, `dob`, `next_of_kin_full_name`, `next_of_kin_email`, `next_of_kin_telephone`, `next_of_kin_address`, `address`, `date_registered_for_event`, `passport_photo`, `barcode_id`, `registration_officer_id`, `additional_column_1`, `additional_column_2`) VALUES
+(2, '1', 'Geofrey', 'Apollos', NULL, NULL, 'male', NULL, 'Israel Geofrey', NULL, NULL, NULL, NULL, '2024-04-03 15:14:05', NULL, NULL, '2', NULL, NULL),
+(3, '1', 'Geofrey', 'Apollos', NULL, NULL, 'female', NULL, 'Israel Geofrey', NULL, NULL, NULL, NULL, '2024-04-03 15:14:34', NULL, NULL, '2', NULL, NULL),
+(4, '1', 'Apollos', 'Apollos Picture', 'apollosgeofrey@gmail.com', '08106338037', 'male', '2024-01-28 00:00:00', 'Israel Geofrey', 'israelgeofrey@gmail.com', '08106337077', 'Masaka, Nasarawa State', 'Masaka, Nasarawa State', '2024-04-03 15:16:23', NULL, NULL, '2', NULL, NULL),
+(5, '1', 'Tete', 'TEste TEsa', 'aass@dasa.com', '0900049', 'female', NULL, 'IS Geo', 'isge@rrr.com', '090596', 'msk', 'Mask', '2024-04-03 15:21:15', 'sql-apt.png', NULL, '2', NULL, NULL),
+(6, '29', 'Geofrey', 'Ayock ISreal', 'isreal@gmail.com', '09000999987', 'male', NULL, 'Geofrey Apollos', NULL, '08099999', 'Masaka', NULL, '2024-04-04 17:04:33', NULL, NULL, '2', NULL, NULL),
+(7, '29', 'test', 'user naME', NULL, NULL, 'female', NULL, 'TESRTET KIN', NULL, NULL, NULL, NULL, '2024-04-04 17:06:02', NULL, NULL, '2', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -100,7 +112,8 @@ CREATE TABLE `tbladmin` (
 --
 
 INSERT INTO `tbladmin` (`ID`, `Staffid`, `AdminName`, `UserName`, `FirstName`, `LastName`, `MobileNumber`, `Email`, `Status`, `Photo`, `Password`, `permissions_id`, `AdminRegdate`) VALUES
-(2, 'U002', 'Admin', 'admin@royalevents.com', 'App', 'Admin', 942397933, 'admin@royalevents.com', 1, 'IMG_20220708_170638_972.jpg', '21232f297a57a5a743894a0e4a801fc3', NULL, '2022-07-21 10:18:39');
+(2, 'U002', 'Admin', 'admin@royalevents.com', 'App', 'Admin', 942397933, 'admin@royalevents.com', 1, 'IMG_20220708_170638_972.jpg', '21232f297a57a5a743894a0e4a801fc3', NULL, '2022-07-21 10:18:39'),
+(30, 'DCLM/2024/04', 'Admin', 'johnvakute', 'John', 'Vakute', 8031322256, 'john.vakute@yahoo.com', 1, 'avatar15.jpg', 'c0adda8e76397d530bb00bfb5433c0fa', NULL, '2024-04-04 15:37:29');
 
 -- --------------------------------------------------------
 
@@ -154,7 +167,8 @@ INSERT INTO `tbleventtype` (`ID`, `EventType`, `eventDescription`, `start_date`,
 (5, 'Night Club', NULL, '2024-03-05 00:00:00', '2024-03-07 00:00:00', '2022-01-22 07:04:26'),
 (6, 'Religious', NULL, '2024-03-06 00:00:00', '2024-03-08 00:00:00', '2022-01-22 07:05:27'),
 (7, 'Wedding', NULL, '2024-03-31 00:00:00', '2024-04-04 00:00:00', '2022-01-22 07:06:07'),
-(8, 'December Retreat 2024', NULL, '2024-04-01 00:00:00', '2024-04-05 00:00:00', '2024-03-29 11:37:15');
+(8, 'December Retreat 2024', NULL, '2024-04-01 00:00:00', '2024-04-05 00:00:00', '2024-03-29 11:37:15'),
+(29, 'DCLM Youth Success Camp', 'For young men and women', '2024-04-08 17:00:00', '2024-04-12 10:00:00', '2024-04-04 15:42:02');
 
 --
 -- Indexes for dumped tables
@@ -205,13 +219,13 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `tbeventparticipants`
 --
 ALTER TABLE `tbeventparticipants`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbladmin`
 --
 ALTER TABLE `tbladmin`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tblcompany`
@@ -223,7 +237,7 @@ ALTER TABLE `tblcompany`
 -- AUTO_INCREMENT for table `tbleventtype`
 --
 ALTER TABLE `tbleventtype`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
