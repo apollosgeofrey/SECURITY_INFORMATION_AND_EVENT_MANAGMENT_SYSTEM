@@ -123,7 +123,7 @@ if(isset($_GET['eventid']))
                                 </a>
                                 <br>
 
-                                <b>-Gender:</b> <i><?php  echo htmlentities($row->gender) ?? 'N/A'; ?></i><br>
+                                <b>-Gender:</b> <i><?php  echo htmlentities(!empty($row->gender) ? $row->gender : 'N/A'); ?></i><br>
                                 <b>-Date of Birth:</b> <i><?php  echo htmlentities(date('jS M, Y', strtotime($row->dob)));?></i><br>
                               </small>
                             </td>
@@ -137,7 +137,7 @@ if(isset($_GET['eventid']))
 
                             <td class="d-none d-sm-table-cell">
                               <small>
-                                <i><?php  echo strtoupper(htmlentities($row->address ?? 'N/A')); ?></i>
+                                <i><?php  echo strtoupper(htmlentities(!empty($row->address) ? $row->address : 'N/A')); ?></i>
                               </small>                              
                             </td>
 
@@ -154,9 +154,9 @@ if(isset($_GET['eventid']))
                                   <?php  echo strtoupper(htmlentities($row->next_of_kin_full_name));?>
                                 </b><br>
 
-                                <b>*Email:</b> <i><?php  echo htmlentities($row->next_of_kin_email) ?? 'N/A'; ?></i><br>
-                                <b>*Telephone:</b> <i><?php  echo htmlentities($row->next_of_kin_telephone) ?? 'N/A'; ?></i><br>
-                                <b>*Address:</b> <i><?php  echo htmlentities($row->next_of_kin_address) ?? 'N/A'; ?></i><br>
+                                <b>*Email:</b> <i><?php  echo htmlentities(!empty($row->next_of_kin_email) ? $row->next_of_kin_email : 'N/A'); ?></i><br>
+                                <b>*Telephone:</b> <i><?php  echo htmlentities(!empty($row->next_of_kin_telephone) ? $row->next_of_kin_telephone : 'N/A'); ?></i><br>
+                                <b>*Address:</b> <i><?php  echo htmlentities(!empty($row->next_of_kin_address) ? $row->next_of_kin_address : 'N/A'); ?></i><br>
                               </small>
                             </td>
                                   
@@ -171,8 +171,8 @@ if(isset($_GET['eventid']))
                               
                               <small>
                                 <b>
-                                  <?php  echo strtoupper(htmlentities($result['FirstName'] ?? 'N/A'));?>
-                                  <?php  echo strtoupper(htmlentities($result['LastName'] ?? 'N/A'));?>
+                                  <?php  echo strtoupper(htmlentities(!empty($result['FirstName']) ? $result['FirstName'] : 'N/A'));?>
+                                  <?php  echo strtoupper(htmlentities(!empty($result['LastName']) ? $result['LastName'] : 'N/A'));?>
                                 </b><br>
                               </small>
                             </td>

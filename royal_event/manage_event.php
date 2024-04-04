@@ -116,7 +116,7 @@ if(isset($_GET['delid']))
                               <div class="">
                                 <small>
                                   <b class="fw-bold">Description:</b>
-                                  <i><?php  echo htmlentities($row->eventDescription ?? ' N/A');?></i>
+                                  <i><?php  echo htmlentities(!empty($row->eventDescription) ? $row->eventDescription : ' N/A');?></i>
                                 </small>                                
                               </div>
                             </td>
