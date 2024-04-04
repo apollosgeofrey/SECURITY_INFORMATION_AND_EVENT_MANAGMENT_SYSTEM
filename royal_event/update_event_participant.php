@@ -46,7 +46,8 @@ if(isset($_POST['saveupdates']))
 
   if ($query4->execute()) {
     echo '<script>alert("Event Participant has been updated.")</script>';
-    echo "<script>window.location.href = 'manage_event_participant.php'</script>";
+    $eventId = intval($_GET['eventid']);
+    echo "<script>window.location.href = 'manage_event_participant.php?eventid=$eventId'></script>";
   }else{
     echo '<script>alert("Update failed! try again later")</script>';
   }

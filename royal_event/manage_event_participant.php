@@ -100,8 +100,9 @@ if(isset($_GET['eventid']))
                   
                   <tbody>
                     <?php
-                    $sql="SELECT * from tbeventparticipants ORDER BY date_registered_for_event ASC";
+                    $sql="SELECT * from tbeventparticipants WHERE eventtype_id=:eventId ORDER BY date_registered_for_event ASC";
                     $query = $dbh -> prepare($sql);
+                    $query->bindParam(':eventId', $_GET['eventid'], PDO::PARAM_STR);
                     $query->execute();
                     $results=$query->fetchAll(PDO::FETCH_OBJ);
 

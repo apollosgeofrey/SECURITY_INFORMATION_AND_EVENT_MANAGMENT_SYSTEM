@@ -44,7 +44,8 @@ if(isset($_POST['submit_participant']))
   $LastInsertId=$dbh->lastInsertId();
   if ($LastInsertId>0) {
     echo '<script>alert("Participant has been added to event.")</script>';
-    echo "<script>window.location.href = 'manage_event_participant.php'</script>";
+    $eventId = intval($_GET['eventid']);
+    echo "<script>window.location.href = 'manage_event_participant.php?eventid=$eventId'></script>";
   } else {
    echo '<script>alert("Something Went Wrong. Please try again")</script>';
   }
