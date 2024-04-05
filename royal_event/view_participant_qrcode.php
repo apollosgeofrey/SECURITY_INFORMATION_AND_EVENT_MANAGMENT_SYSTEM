@@ -22,25 +22,22 @@ include('includes/checklogin.php');
                 </div>
 
               <div class="card-body table-responsive p-3">
-                <table class="table align-items-center table-flush table-hover" id="dataTableHover">                  
-                    <tbody>
-                      <?php
-                      $eventParticipantId = $_GET['eventParticipantId'];
-                      $sql="SELECT * from tbeventparticipants WHERE id=:eventParticipantId";
-                      $query = $dbh -> prepare($sql);
-                      $query->bindParam(':eventParticipantId', $eventParticipantId, PDO::PARAM_STR);
-                      $query->execute();
-                      $result=$query->fetch(PDO::FETCH_OBJ);
+                <?php
+                    $eventParticipantId = $_GET['eventParticipantId'];
+                    $sql="SELECT * from tbeventparticipants WHERE id=:eventParticipantId";
+                    $query = $dbh -> prepare($sql);
+                    $query->bindParam(':eventParticipantId', $eventParticipantId, PDO::PARAM_STR);
+                    $query->execute();
+                    $participant = $query->fetch(PDO::FETCH_OBJ);
 
-                      if($query->rowCount() > 0)
-                      {
-                        var_dump($result);
-                      } else {
+                    if($query->rowCount() > 0) {
+                  
+                      @include("includes/participant_id_card_template.php");
 
-                      }
-                      ?>
-                      </tbody>
-                  </table>
+                    } else {
+                      echo "<div class='text-danger text-center'><i>No Verification Identity Details Found!</i></div>";
+                    }
+                  ?>
                 </div>
               </div>
             </div>

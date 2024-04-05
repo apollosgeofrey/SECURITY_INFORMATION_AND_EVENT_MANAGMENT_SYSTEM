@@ -10,7 +10,7 @@ if(isset($_GET['delid']))
   $query->bindParam(':rid',$rid,PDO::PARAM_STR);
   $query->execute();
   echo "<script>alert('Participant Data Deleted');</script>"; 
-  echo "<script>window.location.href = 'manage_event_participant.php'</script>";
+  echo "<script>window.location.href = 'manage_event_participant.php?eventid=$eventId'</script>";
 }
 
   // get the event record
@@ -124,7 +124,7 @@ if(isset($_GET['eventid']))
                                 <br>
 
                                 <b>-Gender:</b> <i><?php  echo htmlentities(!empty($row->gender) ? $row->gender : 'N/A'); ?></i><br>
-                                <b>-Date of Birth:</b> <i><?php  echo htmlentities(date('jS M, Y', strtotime($row->dob)));?></i><br>
+                                <b>-Date of Birth:</b> <i><?php  echo htmlentities(!empty($row->dob) ? date('jS M, Y', strtotime($row->dob)) : 'N/A');?></i><br>
                               </small>
                             </td>
 
